@@ -14,7 +14,7 @@
   let tabs = [
     { name: 'All', path: '/search' },
     { name: 'Featured', path: '/search/featured' },
-    { name: 'Apparel', path: '/search/clothes' }
+    { name: 'Travel Packages', path: '/search/clothes' }
   ];
   function openCart() {
     showMenu = false;
@@ -26,18 +26,7 @@
   <div class="flex w-1/3 items-center">
     <div class="mr-4" class:active={currentRoute === '/'}>
       <a href="/" data-sveltekit-prefetch class="">
-        <picture>
-          <source srcset="/svelte_logo.png" type="image/png" />
-          <img
-            alt="Svelte Logo"
-            class="h-[38] w-[32]"
-            decoding="async"
-            height={38}
-            loading="eager"
-            src="/svelte_logo.png"
-            width={32}
-          />
-        </picture>
+       BMR Tour and travel
       </a>
     </div>
     <div class="hidden lg:flex">
@@ -78,7 +67,7 @@
     </button>
   </div>
   {#if showMenu}
-    <div
+    <button
       on:click|self={() => {
         showMenu = false;
       }}
@@ -105,7 +94,7 @@
         </div>
         <div class="mt-6 flex w-full flex-col">
           {#each tabs as tab, i (tab.name)}
-            <div
+            <button
               class:active={currentRoute === tab.path}
               on:click={() => {
                 showMenu = false;
@@ -118,10 +107,10 @@
                   currentRoute === tab.path ? 'opacity-100' : 'opacity-75'
                 }`}>{tab.name}</a
               >
-            </div>
+            </button>
           {/each}
         </div>
       </div>
-    </div>
+    </button>
   {/if}
 </nav>
