@@ -6,6 +6,7 @@
   import { getCartItems } from '../store';
   import { onMount } from 'svelte';
   import { createCart } from '$utils/shopify';
+  import 'bytemd/dist/index.css'
 
   let cartId;
   let checkoutUrl;
