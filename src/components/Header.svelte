@@ -12,8 +12,8 @@
   let showMenu = false;
 
   let tabs = [
-    { name: 'All', path: '/search' },
-    { name: 'Featured', path: '/search/featured' },
+    { name: 'Semua Paket', path: '/search' },
+    { name: 'Paket Bali', path: '/search/featured' },
     { name: 'Travel Packages', path: '/search/clothes' }
   ];
   function openCart() {
@@ -22,11 +22,11 @@
   }
 </script>
 
-<nav class="flex items-center border-b border-zinc-700 p-4 lg:px-6">
+<nav class="flex items-center border-b bg-light text-bmrMain border-zinc-700 p-4 lg:px-6">
   <div class="flex w-1/3 items-center">
     <div class="mr-4" class:active={currentRoute === '/'}>
       <a href="/" data-sveltekit-prefetch class="">
-       BMR Tour and travel
+        <img src="/bmr-logo.png" alt="BMR Logo" class="h-20" />
       </a>
     </div>
     <div class="hidden lg:flex">
@@ -35,7 +35,7 @@
           <a
             data-sveltekit-prefetch
             href={tab.path}
-            class={`hover:opacity-100 px-2 py-1 text-white rounded-lg ${
+            class={`hover:opacity-100 px-2 py-1 text-bmrMain hover:text-bmrOrange font-bold rounded-lg ${
               currentRoute === tab.path ? 'opacity-100' : 'opacity-75'
             }`}>{tab.name}</a
           >
@@ -46,71 +46,4 @@
   <div class="hidden w-1/3 lg:block">
     <SearchBar />
   </div>
-  <div class="ml-auto flex items-center">
-    <button on:click={openCart} class="relative my-2 mx-4">
-      <Icons strokeColor="#fff" type="cart" />
-      <div
-        data-test="cart-quantity"
-        class="absolute bottom-0 left-0 -ml-3 -mb-3 flex h-5 w-5 items-center justify-center rounded-full border border-black bg-white text-xs text-black"
-      >
-        {$cartQuantity}
-      </div>
-    </button>
-    <button
-      on:click={() => {
-        showMenu = true;
-      }}
-      aria-label="Open menu"
-      class="lg:hidden"
-    >
-      <Icons type="menu" />
-    </button>
-  </div>
-  {#if showMenu}
-    <button
-      on:click|self={() => {
-        showMenu = false;
-      }}
-      class="absolute inset-0 z-50 flex max-h-screen w-full justify-end overflow-hidden bg-black/50 lg:hidden"
-    >
-      <div class="z-30 w-full bg-black p-6 md:w-1/2 lg:w-1/3">
-        <div class="flex w-full items-center justify-between">
-          <button
-            aria-label="Close menu"
-            on:click={() => {
-              showMenu = false;
-            }}
-          >
-            <Icons strokeColor="#fff" type="close" />
-          </button>
-          <button on:click={openCart} class="relative mr-4">
-            <Icons strokeColor="#fff" type="cart" />
-            <div
-              class="absolute bottom-0 left-0 -ml-3 -mb-3 flex h-5 w-5 items-center justify-center rounded-full border border-black bg-white text-xs text-black"
-            >
-              {$cartQuantity}
-            </div>
-          </button>
-        </div>
-        <div class="mt-6 flex w-full flex-col">
-          {#each tabs as tab, i (tab.name)}
-            <button
-              class:active={currentRoute === tab.path}
-              on:click={() => {
-                showMenu = false;
-              }}
-            >
-              <a
-                data-sveltekit-prefetch
-                href={tab.path}
-                class={`hover:opacity-100 px-2 py-1 text-white font-bold text-xl rounded-lg ${
-                  currentRoute === tab.path ? 'opacity-100' : 'opacity-75'
-                }`}>{tab.name}</a
-              >
-            </button>
-          {/each}
-        </div>
-      </div>
-    </button>
-  {/if}
 </nav>

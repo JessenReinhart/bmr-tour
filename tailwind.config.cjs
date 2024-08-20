@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        svelteOrange: '#FF3E00',
-        svelteDark: '#F03A00',
+        bmrMain: '#073334',
+        bmrOrange: '#E77C2B',
         hotPink: '#FF1966',
         dark: '#111111',
         light: '#FAFAFA'

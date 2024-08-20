@@ -22,9 +22,9 @@
     id="searchInput"
     type="text"
     bind:value
-    placeholder="Search for products..."
+    placeholder="Cari paket wisatamu..."
     autocomplete="off"
-    class="w-full border border-white/30 bg-transparent p-2"
+    class="w-full border border-dark/30 bg-transparent p-2 rounded"
   />
 </form>
 
